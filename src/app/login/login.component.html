@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="p-grid">
+  <p-panel header="Tienda Online">
+    <div class="p-col-12">
+      <span class="p-float-label">
+        <input id="user" type="text" pInputText [(ngModel)]="userID" min="0">
+        <label for="user">Usuario</label>
+      </span>
+    </div>
+    <div class="p-col-12" style="padding-top: 13px">
+      <span class="p-float-label">
+        <input id="password" type="password" pInputText [(ngModel)]="password">
+        <label for="password">Contraseña</label>
+      </span>
+    </div>
+    <p-footer>
+      <p-button label="Entrar" (click)="login()"></p-button>
+    </p-footer>
+  </p-panel>
+</div>

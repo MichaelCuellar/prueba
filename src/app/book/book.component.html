@@ -1,1 +1,22 @@
-<p>book works!</p>
+  <div class="p-grid" *ngFor="let book of books;index as i">
+    <div class="p-col-3">
+      <img alt="Card" [src]="book.img" width="200px" height="300px" >
+    </div>
+    <div class="p-col-9">
+      <h3 class="subTitle noMargin">{{book.title}}</h3>
+      <h1 class="content">Cantidad disponible:{{book.units == 0 ? 'Agotado': book.units}}</h1>
+      <h1 class="content">Precio:${{book.price}}</h1>
+      <div class="p-grid" *ngIf="book.units!= 0">
+        <div class="p-col-4">
+          <h1 class="content">Agregar al carrito:</h1>
+        </div>
+        <div class="p-col-2">
+          <input id="user{{i}}" style="width: 70%" type="number" pInputText min="0" max="{{book.units}}">
+        </div>
+        <div class="p-col-6">
+        <p-button label="Agregar" (click)="saveData(i,book)"></p-button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p-toast></p-toast>

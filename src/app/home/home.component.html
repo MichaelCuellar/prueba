@@ -1,1 +1,24 @@
-<p>home works!</p>
+<div class="p-grid">
+  <div class="p-col-10">
+    <label class="title">Harry Books - Tienda Online</label>
+  </div>
+  <div class="p-col-2 p-text-right">
+    <p-button label="Cerrar sesion" (click)="closeSession()" *ngIf="boutique"></p-button>
+  </div>
+  <div class="p-col-12">
+    <hr>
+  </div>
+  <div class="p-col-9">
+    <label class="subTitle" *ngIf="boutique">Libros Disponibles</label>
+    <label class="subTitle" *ngIf="!boutique">Carrito de compras</label>
+  </div>
+  <div class="p-col-3">
+    <p-button label="Ir al carrito de compras" (click)="shoppingCart()" *ngIf="boutique"></p-button>
+  </div>
+</div>
+<app-book *ngIf="boutique"></app-book>
+<app-sale (back)="backPages($event)" *ngIf="!boutique"></app-sale>
+
+<p-dialog header="Informacion" [(visible)]="display" [modal]="true">
+  <label class="subTitle">Hemos recibido su solicitud y será procesada por nuestras agentes. Gracias por su compra</label>
+</p-dialog>

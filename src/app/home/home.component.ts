@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {BookShopService} from "../api.services/book-shop.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  boutique = true;
+  display = false;
+
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
   }
 
+  shoppingCart(): void{
+    this.boutique = false;
+  }
+
+  backPages($event: any): void{
+    this.boutique = true;
+    this.display = true;
+  }
+
+  closeSession(): void {
+    this.route.navigate(['']).then(r => {
+      sessionStorage.clear();
+    });
+  }
 }
